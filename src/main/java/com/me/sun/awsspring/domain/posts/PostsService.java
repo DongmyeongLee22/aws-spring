@@ -1,5 +1,8 @@
 package com.me.sun.awsspring.domain.posts;
 
+import com.me.sun.awsspring.web.dto.PostsResponseDto;
+import com.me.sun.awsspring.web.dto.PostsSaveRequestDto;
+import com.me.sun.awsspring.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

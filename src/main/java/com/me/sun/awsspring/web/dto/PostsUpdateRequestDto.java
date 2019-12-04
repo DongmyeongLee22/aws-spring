@@ -1,4 +1,4 @@
-package com.me.sun.awsspring.domain.posts;
+package com.me.sun.awsspring.web.dto;
 
 import lombok.Builder;
 import lombok.Getter;

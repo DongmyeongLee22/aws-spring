@@ -1,5 +1,9 @@
-package com.me.sun.awsspring.domain.posts;
+package com.me.sun.awsspring.web;
 
+import com.me.sun.awsspring.domain.posts.PostsService;
+import com.me.sun.awsspring.web.dto.PostsResponseDto;
+import com.me.sun.awsspring.web.dto.PostsSaveRequestDto;
+import com.me.sun.awsspring.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

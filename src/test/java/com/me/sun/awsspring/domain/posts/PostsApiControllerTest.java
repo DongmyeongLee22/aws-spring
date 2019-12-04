@@ -1,5 +1,7 @@
 package com.me.sun.awsspring.domain.posts;
 
+import com.me.sun.awsspring.web.dto.PostsSaveRequestDto;
+import com.me.sun.awsspring.web.dto.PostsUpdateRequestDto;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;

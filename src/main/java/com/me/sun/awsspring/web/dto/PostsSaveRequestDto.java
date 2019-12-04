@@ -1,5 +1,6 @@
-package com.me.sun.awsspring.domain.posts;
+package com.me.sun.awsspring.web.dto;
 
+import com.me.sun.awsspring.domain.posts.Posts;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
