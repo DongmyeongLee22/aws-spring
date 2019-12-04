@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -35,7 +37,7 @@ public class PostsApiControllerTest {
     }
 
     @Test
-    public void Post등록() throws Exception {
+    public void Post_등록() throws Exception {
         //given
         String title = "제목";
         String content = "본문";
@@ -62,6 +64,47 @@ public class PostsApiControllerTest {
         assertThat(getPosts.getTitle()).isEqualTo(title);
         assertThat(getPosts.getContent()).isEqualTo(content);
         assertThat(getPosts.getAuthor()).isEqualTo(author);
+    }
+
+    @Test
+    public void Post_수정() throws Exception {
+        //given
+        String title = "제목";
+        String content = "본문";
+        String author = "123123@gmail.com";
+        Posts posts = Posts.builder()
+                .title(title)
+                .content(content)
+                .author(author)
+                .build();
+
+        Posts savedPosts = postsRepository.save(posts);
+
+        Long updateId = savedPosts.getId();
+
+        String expectedTitle = "변경된 제목";
+        String expectedContent = "변경된 본문";
+
+        PostsUpdateRequestDto requestDto = PostsUpdateRequestDto.builder()
+                .title(expectedTitle)
+                .content(expectedContent)
+                .build();
+
+        String url = "http://localhost:" + port + "/api/v1/posts/" + updateId;
+
+        HttpEntity<PostsUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
+
+        //when
+        ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Long.class);
+
+
+        //then
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(responseEntity.getBody()).isGreaterThan(0L);
+
+        List<Posts> postsList = postsRepository.findAll();
+        assertThat(postsList.get(0).getTitle()).isEqualTo(expectedTitle);
+        assertThat(postsList.get(0).getContent()).isEqualTo(expectedContent);
     }
 
 
