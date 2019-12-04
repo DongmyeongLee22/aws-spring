@@ -1,5 +1,6 @@
 package com.me.sun.awsspring.web;
 
+import com.me.sun.awsspring.config.auth.LoginUser;
 import com.me.sun.awsspring.config.auth.SessionUser;
 import com.me.sun.awsspring.domain.posts.PostsService;
 import com.me.sun.awsspring.web.dto.PostsResponseDto;
@@ -19,11 +20,9 @@ public class IndexController {
     private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model, @LoginUser SessionUser user) {
 
         model.addAttribute("posts", postsService.findAllDesc());
-
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
 
         if (user != null) {
             model.addAttribute("userName", user.getName());
