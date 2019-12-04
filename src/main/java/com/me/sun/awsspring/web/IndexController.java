@@ -1,7 +1,7 @@
 package com.me.sun.awsspring.web;
 
 import com.me.sun.awsspring.config.auth.LoginUser;
-import com.me.sun.awsspring.config.auth.SessionUser;
+import com.me.sun.awsspring.config.auth.dto.SessionUser;
 import com.me.sun.awsspring.domain.posts.PostsService;
 import com.me.sun.awsspring.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -10,14 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import javax.servlet.http.HttpSession;
-
 @Controller
 @RequiredArgsConstructor
 public class IndexController {
 
     private final PostsService postsService;
-    private final HttpSession httpSession;
 
     @GetMapping("/")
     public String index(Model model, @LoginUser SessionUser user) {

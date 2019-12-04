@@ -1,5 +1,6 @@
 package com.me.sun.awsspring.config.auth;
 
+import com.me.sun.awsspring.config.auth.dto.SessionUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;

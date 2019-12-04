@@ -1,4 +1,4 @@
-package com.me.sun.awsspring.config.auth;
+package com.me.sun.awsspring.config.auth.dto;
 
 import com.me.sun.awsspring.domain.user.User;
 import lombok.Getter;

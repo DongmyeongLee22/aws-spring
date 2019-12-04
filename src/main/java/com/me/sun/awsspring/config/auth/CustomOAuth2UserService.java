@@ -1,8 +1,9 @@
 package com.me.sun.awsspring.config.auth;
 
+import com.me.sun.awsspring.config.auth.dto.OAuthAttributes;
+import com.me.sun.awsspring.config.auth.dto.SessionUser;
 import com.me.sun.awsspring.domain.user.User;
 import com.me.sun.awsspring.domain.user.UserRepository;
-import com.me.sun.awsspring.web.dto.OAuthAttributes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
